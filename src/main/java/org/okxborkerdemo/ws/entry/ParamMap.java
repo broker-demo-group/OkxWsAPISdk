@@ -1,4 +1,4 @@
-package ws.entry;
+package org.okxborkerdemo.ws.entry;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;

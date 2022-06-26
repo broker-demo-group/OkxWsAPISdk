@@ -1,4 +1,4 @@
-package exception;
+package org.okxborkerdemo.exception;
 
 /**
  * @author: bowen
@@ -9,6 +9,7 @@ public class OkxApiException extends RuntimeException {
     private int code;
     private String detailMsg;
     private static final long serialVersionUID = 996L;
+
     public OkxApiException(String message, int code) {
         super(message);
         this.code = code;
@@ -17,12 +18,13 @@ public class OkxApiException extends RuntimeException {
     public OkxApiException(String message, Throwable e) {
         super(message, e);
     }
+
     public OkxApiException(Throwable e) {
-        super( e);
+        super(e);
     }
 
     @Override
     public String getMessage() {
-        return " OkxApiAccessException:[code:"+code+" message:"+super.getMessage()+"]";
+        return " OkxApiAccessException:[code:" + code + " message:" + super.getMessage() + "]";
     }
 }

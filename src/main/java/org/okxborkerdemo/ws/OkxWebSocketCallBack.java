@@ -1,4 +1,4 @@
-package ws;
+package org.okxborkerdemo.ws;
 
 /**
  * @author: bowen

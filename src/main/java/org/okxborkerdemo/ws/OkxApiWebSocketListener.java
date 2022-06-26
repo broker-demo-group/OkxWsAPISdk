@@ -1,8 +1,8 @@
-package ws;
+package org.okxborkerdemo.ws;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-import exception.OkxApiException;
+import org.okxborkerdemo.exception.OkxApiException;
 import okhttp3.Response;
 import okhttp3.WebSocket;
 import okhttp3.WebSocketListener;

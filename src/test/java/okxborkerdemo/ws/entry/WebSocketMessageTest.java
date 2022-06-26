@@ -1,7 +1,6 @@
-package ws.entry;
+package okxborkerdemo.ws.entry;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.*;
+import org.okxborkerdemo.ws.entry.WebSocketMessage;
 
 class WebSocketMessageTest {
 

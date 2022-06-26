@@ -1,11 +1,12 @@
-package ws;
+package okxborkerdemo.ws;
 
 import com.google.gson.JsonObject;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.WebSocket;
 import org.junit.jupiter.api.Test;
-import ws.entry.WebSocketMessage;
+import org.okxborkerdemo.ws.OkxApiWebSocketListener;
+import org.okxborkerdemo.ws.entry.WebSocketMessage;
 
 class OkxApiWebSocketListenerTest {
     /**
