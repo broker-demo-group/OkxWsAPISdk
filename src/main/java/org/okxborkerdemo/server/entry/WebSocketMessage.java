@@ -1,4 +1,4 @@
-package org.okxborkerdemo.ws.entry;
+package org.okxborkerdemo.server.entry;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -13,7 +13,7 @@ import com.google.gson.JsonPrimitive;
 public class WebSocketMessage {
 
     String op;
-    ParamMap param= new ParamMap();
+    ParamMap param = new ParamMap();
 
     public void setOp(String op) {
         this.op = op;
@@ -23,14 +23,17 @@ public class WebSocketMessage {
         return param.add(key, value);
     }
 
+    public boolean containsKey(String key) {
+        return param.containsKey(key);
+    }
 
 
-    public JsonObject getMessage(){
+    public JsonObject getMessage() {
         JsonObject jsonObject = new JsonObject();
         jsonObject.add("op", new JsonPrimitive(op));
         JsonArray jsonArray = new JsonArray();
-        jsonArray.add(new Gson().fromJson(param.getPayLoadJson(),JsonObject.class));
-        jsonObject.add("args",jsonArray);
+        jsonArray.add(new Gson().fromJson(param.getPayLoadJson(), JsonObject.class));
+        jsonObject.add("args", jsonArray);
         return jsonObject;
     }
 }

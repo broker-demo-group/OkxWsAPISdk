@@ -1,9 +1,13 @@
 package org.okxborkerdemo;
 
-import com.google.gson.JsonObject;
+import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.WebSocket;
+import org.okxborkerdemo.server.PublicChannelService;
 import org.okxborkerdemo.ws.OkxApiWebSocketListener;
+import org.okxborkerdemo.server.entry.WebSocketMessage;
+
+import java.io.Closeable;
 
 /**
  * @author: bowen
@@ -15,18 +19,33 @@ public class WebSocketClient {
     WebSocket.Factory client;
     boolean isSimulate;
     String baseUrl = "wss://wspap.okx.com:8443/ws/v5/public?brokerId=9999";
-    WebSocket ws;
+    PublicChannelService publicChannelService;
 
-    public WebSocketClient(WebSocket.Factory client, boolean isSimulate) {
-        this.client = client;
+    public WebSocketClient(boolean isSimulate) {
+        this.client = new OkHttpClient.Builder().build();
         this.isSimulate = isSimulate;
-        ws = newWebSocket();
+
+        publicChannelService = new PublicChannelService(this);
+
     }
 
-
-    public WebSocket newWebSocket() {
+    public WebSocket createWebSocket(OkxApiWebSocketListener<?> listener) {
         Request request = new Request.Builder().url(baseUrl).build();
-        return ws = client.newWebSocket(request,new OkxApiWebSocketListener<>(JsonObject.class,System.out::println));
+        return client.newWebSocket(request, listener);
+    }
 
+    public Closeable subscribe(WebSocketMessage message, OkxApiWebSocketListener<?> listener) {
+        WebSocket ws = createWebSocket(listener);
+        ws.send(message.getMessage().toString());
+        return () -> {
+            int code = 1000;
+            listener.onClosing(ws, code, null);
+            ws.close(code, null);
+            listener.onClosed(ws, code, null);
+        };
+    }
+
+    public PublicChannelService getPublicChannelService() {
+        return publicChannelService;
     }
 }

@@ -1,6 +1,7 @@
-package okxborkerdemo.ws.entry;
+package org.okxborkerdemo.ws.entry;
+
 import org.junit.jupiter.api.Test;
-import org.okxborkerdemo.ws.entry.WebSocketMessage;
+import org.okxborkerdemo.server.entry.WebSocketMessage;
 
 class WebSocketMessageTest {
 
@@ -9,9 +10,9 @@ class WebSocketMessageTest {
 
         WebSocketMessage message = new WebSocketMessage();
         message.setOp("subscribe");
-        message.add("channel","tickers");
-        message.add("instId","BTC-USDT");
-        message.add("param","");
+        message.add("channel", "tickers");
+        message.add("instId", "BTC-USDT");
+        message.add("param", "");
         System.out.println(message.getMessage());
 
     }

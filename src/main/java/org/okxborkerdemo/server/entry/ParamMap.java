@@ -1,4 +1,4 @@
-package org.okxborkerdemo.ws.entry;
+package org.okxborkerdemo.server.entry;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -11,20 +11,24 @@ import java.util.Map;
  * @description:
  * @date: 2022/6/13  11:28 PM
  **/
-public class ParamMap{
+public class ParamMap {
     Map<String, String> param = new HashMap<>();
 
     public String add(String key, String value) {
         return param.put(key, value);
     }
 
+    public Boolean containsKey(String key) {
+        return param.containsKey(key);
+    }
+
     public String getPayLoadJson() {
         StringBuilder sb = new StringBuilder();
         sb.append("{");
         for (Map.Entry<String, String> e : param.entrySet()) {
-            sb.append("\""+e.getKey() + "\":\"" + e.getValue() + "\",");
+            sb.append("\"" + e.getKey() + "\":\"" + e.getValue() + "\",");
         }
-        if(sb.length()>1) {
+        if (sb.length() > 1) {
             sb.deleteCharAt(sb.lastIndexOf(","));
         }
         sb.append("}");
