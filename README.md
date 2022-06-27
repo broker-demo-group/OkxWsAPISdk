@@ -1,6 +1,6 @@
 # OkxWsAPISdk
-快速订阅 okx 的 WebScoket 接口,例如订阅 **BTC-USDT** 的行情频道：
-> 获取 **BTC-USDT** 的最新成交价、买一价、卖一价和24小时交易量等信息，每100ms有成交就推送一次数据。
+### 例如订阅 **BTC-USDT** 的行情频道：
+> 获取 **BTC-USDT** 的最新成交价、买一价、卖一价和24小时交易量等信息，每100ms有成交就收到一次推送数据。
 
 ```
   Closeable closeable = client.getPublicChannelService().subscribeTickers("BTC-USDT", JsonObject.class,
