@@ -5,7 +5,6 @@
 ```
   Closeable closeable = client.getPublicChannelService().subscribeTickers("BTC-USDT", JsonObject.class,
                   response -> {
-                      System.out.println("response class:" + response.getClass());
                       System.out.println(response);
                   });
 ```
